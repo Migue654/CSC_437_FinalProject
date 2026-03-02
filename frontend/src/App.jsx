@@ -1,37 +1,42 @@
+import './App.css';
+
+
+import { MainPage } from "./main_page";
+import {Settings} from "./Settings";
+import {Supply} from "./Supply";
+import {Ideas} from "./Ideas";
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import { SHARED_TEST } from "./shared/example.js";
-import "./App.css";
+
+import { Routes, Route } from "react-router-dom";
+import { Signup } from './signup';
 
 function App() {
-  const [count, setCount] = useState(0);
+    const [darkMode, setDarkMode] = useState(false);
+    const [food,setFood]=useState([]);
+    const [meals, setMeals] = useState([]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <p>Shared test var: {SHARED_TEST}</p>
-    </>
-  );
+    const [Username, setUsername] = useState("");
+    const [Password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    return (
+    <div className={darkMode ? "dark bg-gray-900 min-h-screen text-white"  : "min-h-screen"}>
+        <Routes>
+            <Route path="/signup" element={<Signup Username={Username}
+            setUsername={setUsername}
+            email={email}
+            setEmail={setEmail}
+            Password={Password}
+            setPassword={setPassword}
+            darkMode={darkMode}
+            setDarkMode={setDarkMode}/>} />
+            <Route path="/" element={<MainPage food={food} meals={meals} darkMode={darkMode} setDarkMode={setDarkMode} />} />
+            <Route path="/settings" element={<Settings darkMode={darkMode} setDarkMode={setDarkMode} />} />
+            <Route path="/supply" element={<Supply food={food} setFood={setFood} darkMode={darkMode} setDarkMode={setDarkMode} />} />
+            <Route path="/ideas" element={<Ideas Username={Username} food={food} setFood={setFood} meals={meals} setMeals={setMeals} darkMode={darkMode} setDarkMode={setDarkMode} />} />
+
+        </Routes>
+    </div>
+);
 }
 
-export default App
+export default App;
