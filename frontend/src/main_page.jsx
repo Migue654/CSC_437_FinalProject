@@ -2,11 +2,11 @@
 
 import Header from "./header";
 
-export function MainPage({ meals = [] , darkMode, setDarkMode }) {
+export function MainPage({ meals = [] , darkMode, setDarkMode,Username }) {
 
   return (
     <main>
-       <Header name="Welcome to Meal-A-Maker" darkMode={darkMode} setDarkMode={setDarkMode} />
+       <Header name="Welcome to Meal-A-Maker" darkMode={darkMode} setDarkMode={setDarkMode} Username={Username} />
       <div className="flex justify-center mt-12 text-lg ">
         <p className="text-[clamp(0.1rem,1rem,5rem)] ">
           A website where you can make creative meals while keeping track of what's in your fridge

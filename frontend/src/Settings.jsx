@@ -1,10 +1,10 @@
 
 import Header from "./header";
 
-export function Settings({darkMode, setDarkMode}){
+export function Settings({darkMode, setDarkMode,Username}){
     return(
     <main className="flex flex-col justify-center ">
-       <Header name="Settings" darkMode={darkMode} setDarkMode={setDarkMode} />
+       <Header name="Settings" darkMode={darkMode} setDarkMode={setDarkMode} Username={Username}/>
         <div>
 
         </div>

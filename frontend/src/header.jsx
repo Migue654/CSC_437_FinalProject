@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
-export function Header({name, darkMode, setDarkMode }){
+export function Header({name, darkMode, setDarkMode, Username }) {
 
    const [menuOpen, setMenuOpen] = useState(false);
 
@@ -28,11 +28,14 @@ return( <div className="relative flex items-center justify-between flex-wrap gap
   </Link>
 
 
-  <div className="hidden sm:flex gap-4 text-[clamp(1.5rem,3vw,3rem)]  mr-4">
-    <button onClick={() => setDarkMode(!darkMode)}className="text-md px-3  rounded-full  hover:scale-110 transition">
-            {darkMode ? "☀️" : "🌙"}
-  </button>
-  <Link to = "/signup" className='hover:scale-110 transition'>
+  <div className="hidden sm:flex gap-4 text-[clamp(1.5rem,3vw,3rem)] mr-4 items-center">
+    {Username && (
+        <span className="text-[1.5rem] font-medium">👤 User: {Username}</span>
+    )}
+    <button onClick={() => setDarkMode(!darkMode)} className="text-md px-3 rounded-full hover:scale-110 transition">
+        {darkMode ? "☀️" : "🌙"}
+    </button>
+  <Link to = "/login" className='hover:scale-110 transition'>
       <FontAwesomeIcon icon={faCircleUser} />
     </Link>
     <Link to="/supply">
@@ -55,6 +58,9 @@ return( <div className="relative flex items-center justify-between flex-wrap gap
   </button>
   {menuOpen && (
   <div className={`absolute top-full right-0 mt-2 shadow-lg rounded-xl p-4 flex flex-col gap-4 text-xl z-50 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}>
+    {Username && (
+        <span className="text-md font-medium border-b pb-2">👤 {Username}</span>
+    )}
     <Link to="/settings" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 hover:scale-105 transition">
       <FontAwesomeIcon icon={faUserGear} /> Settings
     </Link>
@@ -64,7 +70,7 @@ return( <div className="relative flex items-center justify-between flex-wrap gap
     <Link to="/ideas" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 hover:scale-105 transition">
       <FontAwesomeIcon icon={faSpoon} /> Ideas
     </Link>
-    <Link to="/signup" nClick={() => setMenuOpen(false)} className="flex items-center gap-2 hover:scale-105 transition">
+    <Link to="/login" nClick={() => setMenuOpen(false)} className="flex items-center gap-2 hover:scale-105 transition">
       <FontAwesomeIcon icon={faCircleUser} /> Account
 
     </Link>
