@@ -1,0 +1,57 @@
+### Register a new user
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "Miggy",
+    "email": "miguel@example.com",
+    "password": "password123"
+}
+
+### Login
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "Miggy",
+    "password": "password123"
+}
+
+### Wrong password
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "miguel",
+    "password": "wrongpassword"
+}
+### Get pantry
+GET http://localhost:3000/api/pantry
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWI5ZmM4YTAyOTE4MDc5NDVkMTg4NjMiLCJpYXQiOjE3NzQwMjUyNTAsImV4cCI6MTc3NDExMTY1MH0.B1vQxVKRVzcti3awNiee6b4QnCo-Y2HtrF9uekruv7Q
+### Add pantry item
+POST http://localhost:3000/api/pantry
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWI5ZmM4YTAyOTE4MDc5NDVkMTg4NjMiLCJpYXQiOjE3NzQwMjUyNTAsImV4cCI6MTc3NDExMTY1MH0.B1vQxVKRVzcti3awNiee6b4QnCo-Y2HtrF9uekruv7Q
+Content-Type: application/json
+
+{
+    "name": "Milk",
+    "category": "Diary",
+    "inStock": true
+}
+
+### Get meals
+GET http://localhost:3000/api/meals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWI5ZmM4YTAyOTE4MDc5NDVkMTg4NjMiLCJpYXQiOjE3NzQwMjcwMjksImV4cCI6MTc3NDExMzQyOX0.8lvPi_3qcBx0Eda-YKpffUsLZyHiP6z13KCsQUmZwAc
+
+### Add meal
+POST http://localhost:3000/api/meals
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWI5ZmM4YTAyOTE4MDc5NDVkMTg4NjMiLCJpYXQiOjE3NzQwMjcwNTEsImV4cCI6MTc3NDExMzQ1MX0.nxqGMBdN9DWAR1lvyEtYRoEeR9pPdW-HNkYtBKKZ8nE
+Content-Type: application/json
+
+{
+    "name": "Pasta",
+    "ingredients": [
+        { "name": "Pasta", "type": "Carbs" },
+        { "name": "Tomato Sauce", "type": "Vegetables" }
+    ]
+}
